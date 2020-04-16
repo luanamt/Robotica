@@ -1,17 +1,6 @@
 MODULE Module1
-	CONST robtarget p10:=[[958.05,-143.29,943.08],[0.00584677,-0.0667075,0.997755,-6.60197E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p20:=[[946.02,-220.94,75.05],[0.00584664,-0.0667075,0.997755,-6.56944E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p30:=[[929.84,462.15,191.24],[0.0328495,0.228459,-0.972969,0.00771327],[0,0,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p40:=[[1065.57,425.02,75.05],[0.00584671,-0.0667074,0.997755,-6.80736E-6],[0,-1,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p50:=[[1065.57,425.02,75.05],[0.00584671,-0.0667074,0.997755,-6.80736E-6],[0,-1,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p60:=[[1030.77,406.37,75.05],[0.00584681,-0.0667074,0.997755,-6.71777E-6],[0,-1,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p70:=[[1224.76,432.37,75.05],[0.00584684,-0.0667075,0.997755,-6.71356E-6],[0,-1,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p80:=[[1132.15,141.24,75.06],[0.00584653,-0.0667071,0.997755,-7.5236E-6],[0,-1,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p90:=[[1221.28,-80.98,93.52],[0.00584679,-0.0667075,0.997755,-6.61914E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p110:=[[1142.06,-220.94,75.05],[0.00584669,-0.0667075,0.997755,-6.58657E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p100:=[[1142.06,-220.94,75.05],[0.00584669,-0.0667075,0.997755,-6.58657E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p130:=[[1021.02,-220.94,75.05],[0.00584667,-0.0667075,0.997755,-6.57927E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
-	CONST robtarget p120:=[[1021.02,-220.94,75.05],[0.00584667,-0.0667075,0.997755,-6.57927E-6],[-1,0,-1,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
+	CONST robtarget p10:=[[952.21,28.30,589.58],[0.124273,-0.0147413,0.992137,0.00184647],[0,0,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
+	CONST robtarget p20:=[[952.21,28.30,589.58],[0.124273,-0.0147413,0.992137,0.00184647],[0,0,0,0],[9E+9,9E+9,9E+9,9E+9,9E+9,9E+9]];
     !***********************************************************
     !
     ! Module:  Module1
@@ -19,7 +8,7 @@ MODULE Module1
     ! Description:
     !   <Insert description here>
     !
-    ! Author: ufabc
+    ! Author: luana
     !
     ! Version: 1.0
     !
@@ -34,25 +23,28 @@ MODULE Module1
     !
     !***********************************************************
     PROC main()
-        !Add your code here
-        MoveL p10, v1000, fine, tool0;
-        MoveL Offs(p10,0,100,0), v1000, fine, tool0;
-        MoveL Offs(p10,200,100,0), v1000, fine, tool0;
-        MoveL Offs(p10,200,0,0), v1000, fine, tool0;
-        MoveL Offs(p10,0,0,0), v1000, fine, tool0;
-        MoveL Offs(p10,0,100,0), v1000, fine, tool0;
-        MoveL Offs(p10,0,50,0), v1000, fine, tool0;
-        MoveL Offs(p10,50,100,0), v1000, fine, tool0;
-        MoveL Offs(p10,150,0,0), v1000, fine, tool0;
-        MoveL Offs(p10,200,50,0), v1000, fine, tool0;
-        MoveL Offs(p10,150,100,0), v1000, fine, tool0;
-        MoveL Offs(p10,50,0,0), v1000, fine, tool0;
-        MoveL Offs(p10,0,50,0), v1000, fine, tool0;
-        MoveL Offs(p10,0,100,0), v1000, fine, tool0;
-        MoveL Offs(p10,100,100,0), v1000, fine, tool0;
-        MoveC Offs(p10,150,50,0),Offs(p10,100,0,0), v1000, fine, tool0;
-        MoveC Offs(p10,50,50,0),Offs(p10,100,100,0), v1000, fine, tool0;  
+        VAR num desenho; 
+        TPReadFK desenho, "Selecione o desenho desejado" , "Quadrado", "Círculo", "Triângulo Equilátero", stEmpty, stEmpty;
+         IF desenho = 1 THEN 
+            MoveL Offs(p10,0,0,0), v100, fine, tool0;
+            MoveL Offs(p10,0,100,0), v100, fine, tool0;
+            MoveL Offs(p10,100,100,0), v100, fine, tool0;
+            MoveL Offs(p10,100,0,0), v100, fine, tool0;
+            MoveL Offs(p10,0,0,0), v100, fine, tool0;
+            
+        ELSEIF desenho = 2 THEN 
+            MoveC Offs(p10,50,50,0), Offs(p10,0,100,0), v100, z10, tool0;
+            MoveC Offs(p10,50,50,0), Offs(p10,0,100,0), v100, z10, tool0;
+            
+        ELSEIF desenho = 3 THEN 
+            MoveL Offs(p10,0,0,0), v100, fine, tool0;
+            MoveL Offs(p10,200,0,0), v100, fine, tool0;
+            MoveL Offs(p10,100,200,0), v100, fine, tool0;
+            MoveL Offs(p10,0,0,0), v100, fine, tool0;
+            
+         ELSE
+         ENDIF 
+         
         
-    
     ENDPROC
 ENDMODULE
