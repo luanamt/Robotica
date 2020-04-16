@@ -1,18 +1,18 @@
 MODULE Module1
     !***********************************************************
     !
-    !   Projeto de Fundamentos de RobÛtica : Campo minado
+    !   Projeto de Fundamentos de Rob√≥tica : Campo minado
     !
-    !   Prof. Dr. Sandro LuÌs Vatanabe
+    !   Prof. Dr. Sandro Lu√≠s Vatanabe
     !
     !***********************************************************
     !
     !   Alunos : Alex Key Araki                           RA: 11019914
-    !            Luana Larissa MendonÁa Teixeira          RA: 11201811394
+    !            Luana Larissa Mendon√ßa Teixeira          RA: 11201811394
     !
     !***********************************************************
     !
-    ! Modo de jogar: ( Vers„o final)
+    ! Modo de jogar: ( Vers√£o final)
     !   1- Escolha o tamanho do tabuleiro.
     !   2- Escolha uma linha ( As coordenadas dos eixos se iniciam do canto direito inferior).
     !   3- Escolha uma coluna.
@@ -36,7 +36,7 @@ MODULE Module1
     VAR num Coordenadax ;
     VAR num Coordenaday ; 
     
-    !   Para desenvolver o cÛdigo foi dividio em v·rios blocos afim de manter a organizaÁ„o do mesmo,
+    !   Para desenvolver o c√≥digo foi dividio em v√°rios blocos afim de manter a organiza√ß√£o do mesmo,
     !   sendo divido em DesenhaTabuleiro, DesenhaBomba, DesenhaSafe, DesenhaDica, AplicarBomba, VerificarBomba e o main.
     
     PROC DesenhaTabuleiro()
@@ -46,8 +46,8 @@ MODULE Module1
         VAR num Tamanhotabuleiro ;
         
     !   Para desenhar o tabuleiro foi estimado que cada quadrado teria medida 30, com a possibilidade de dois tabuleiros
-    !   5x5 e 9x9, foi criado duas condiÁoes, multiplicando o tamanho da matriz pelo valor do quadrado.
-    !   O cÛdigo abaixo desenha o tabuleiro pode ser desenhado em qualquer tamanho apenas mudando a vari·vel Tamanhomatriz.
+    !   5x5 e 9x9, foi criado duas condi√ßoes, multiplicando o tamanho da matriz pelo valor do quadrado.
+    !   O c√≥digo abaixo desenha o tabuleiro pode ser desenhado em qualquer tamanho apenas mudando a vari√°vel Tamanhomatriz.
     
         IF Valorinicial = 1 THEN 
             Tamanhomatriz := 5;
@@ -57,7 +57,7 @@ MODULE Module1
         
         Tamanhotabuleiro := Tamanhomatriz*Tamanhoquadrado;
         
-    !    CÛdigo para desenhar o contorno do tabuleiro.
+    !    C√≥digo para desenhar o contorno do tabuleiro.
         MoveJ p10, v50, fine, tool0;
         MoveL Offs(p10,0,0,20), Velocidade, fine, tool0;
         MoveL Offs(p10,0,0,0), Velocidade, fine, tool0;
@@ -67,7 +67,7 @@ MODULE Module1
         MoveL Offs(p10,0,0,0), Velocidade, fine, tool0;
         MoveL Offs(p10,0,0,20), Velocidade, fine, tool0;
         
-    !   CÛdigo para desenhar as linhas do tabuleiro.
+    !   C√≥digo para desenhar as linhas do tabuleiro.
         
         FOR i FROM 1 TO (Tamanhomatriz-1) DO 
             
@@ -80,7 +80,7 @@ MODULE Module1
             
         Quadrado := 30;
         
-    !   CÛdigo para desenhar as colunas do tabuleiro, em seguida voltando ao ponto inicial (0,0).
+    !   C√≥digo para desenhar as colunas do tabuleiro, em seguida voltando ao ponto inicial (0,0).
         
         FOR i FROM 1 TO (Tamanhomatriz-1) DO 
             
@@ -100,13 +100,13 @@ MODULE Module1
     
     PROC DesenhaSafe()
         
-    !   Os cÛdigos para desenhar o 'safe' s„o iguais, porÈm adaptado para cada tabuleiro.
-    !   Como o ponto de referÍncia È o total oposto em X e Y do ponto (0,0) da m·quina,
-    !   parte-se ent„o como ponto inicial os pontos (150,150) para a tabela 5x5, uma vez que 
+    !   Os c√≥digos para desenhar o 'safe' s√£o iguais, por√©m adaptado para cada tabuleiro.
+    !   Como o ponto de refer√™ncia √© o total oposto em X e Y do ponto (0,0) da m√°quina,
+    !   parte-se ent√£o como ponto inicial os pontos (150,150) para a tabela 5x5, uma vez que 
     !   5x30 = 150.
-    !   O mesmo vale para o ponto inicial da tabela 9x9 que È (270,270).
-    !   Outro detalhe È que para desenhar na posiÁ„o correta, foram trocados as coordenadas x e y para calculos,
-    !   uma vez que o eixo X e Y da m·quina s„o diferentes das definidas para o projeto.
+    !   O mesmo vale para o ponto inicial da tabela 9x9 que √© (270,270).
+    !   Outro detalhe √© que para desenhar na posi√ß√£o correta, foram trocados as coordenadas x e y para calculos,
+    !   uma vez que o eixo X e Y da m√°quina s√£o diferentes das definidas para o projeto.
         
     ! Valor inicial = 1 refere-se para tabuleiro 5x5.
         IF Valorinicial = 1 THEN
@@ -139,7 +139,7 @@ MODULE Module1
     PROC DesenhaBomba()
         
     !   Funciona exatamente da mesma forma que o Desenhasafe. 
-    !   PorÈm desenha uma bombinha. 
+    !   Por√©m desenha uma bombinha. 
     !   Desenha bomba no 5x5.
         IF Valorinicial = 1 THEN
             Coordenadax := 150 - ( Eixox*30);
@@ -177,7 +177,7 @@ MODULE Module1
     PROC DesenhaDica()
     !   Para tabuleiro 5x5
         IF Valorinicial = 1 THEN 
-    !   Desenha o valor 1 quando h· uma bomba perto.
+    !   Desenha o valor 1 quando h√° uma bomba perto.
             IF Matriz5{Eixoy,Eixox} = 1 THEN
                 
                 Coordenadax := 150 - ( Eixox*30);
@@ -189,7 +189,7 @@ MODULE Module1
                 MoveL Offs(p10,0,0,20), Velocidade, fine, tool0; 
                 
             ENDIF
-    !   Desenha o valor 2 quando h· duas bombas prÛximas.
+    !   Desenha o valor 2 quando h√° duas bombas pr√≥ximas.
             IF Matriz5{Eixoy,Eixox} = 2 THEN
                 
                 Coordenadax := 150 - ( Eixox*30);
@@ -204,7 +204,7 @@ MODULE Module1
                 
                 
             ENDIF
-    !   Desenha o valor 3 quando h· trÍs bombas prÛximas.
+    !   Desenha o valor 3 quando h√° tr√™s bombas pr√≥ximas.
             IF Matriz5{Eixoy,Eixox} = 3 THEN
                 
                 Coordenadax := 150 - ( Eixox*30);
@@ -223,7 +223,7 @@ MODULE Module1
     ! Para tabuleiro 9x9
         IF Valorinicial = 2 THEN
             IF Matriz9{Eixoy,Eixox} = 1 THEN
-     !   Desenha o valor 1 quando h· uma bomba prÛxima.   
+     !   Desenha o valor 1 quando h√° uma bomba pr√≥xima.   
                 Coordenadax := 270 - ( Eixox*30);
                 Coordenaday := 270 - ( Eixoy*30);
                 MoveL Offs(p10,Coordenaday+10,Coordenadax+8,20), Velocidade, fine, tool0;
@@ -233,7 +233,7 @@ MODULE Module1
                 MoveL Offs(p10,0,0,20), Velocidade, fine, tool0; 
                 
             ENDIF
-      !   Desenha o valor 2 quando h· duas bombas prÛximas.
+      !   Desenha o valor 2 quando h√° duas bombas pr√≥ximas.
             IF Matriz9{Eixoy,Eixox} = 2 THEN
                 
                 Coordenadax := 270 - ( Eixox*30);
@@ -248,7 +248,7 @@ MODULE Module1
                 
                 
             ENDIF
-        !   Desenha o valor 3 quando h· trÍs bombas prÛximas.     
+        !   Desenha o valor 3 quando h√° tr√™s bombas pr√≥ximas.     
             IF Matriz9{Eixoy,Eixox} = 3 THEN
                 
                 Coordenadax := 270 - ( Eixox*30);
@@ -267,9 +267,9 @@ MODULE Module1
     ENDPROC
     
     PROC AplicarBomba()
-        !   Nesta vers„o to projeto houve uma mudanÁa  aonde foi descartado a aleatoriedade para dar maior semelhanÁa ao jogo
+        !   Nesta vers√£o to projeto houve uma mudan√ßa  aonde foi descartado a aleatoriedade para dar maior semelhan√ßa ao jogo
         !   original. 
-        !   Legenda dos valores, 0= sem bombas perto, 1= uma bomba perto, 2= duas bombas perto, 3= trÍs bombas perto, 9= bomba.
+        !   Legenda dos valores, 0= sem bombas perto, 1= uma bomba perto, 2= duas bombas perto, 3= tr√™s bombas perto, 9= bomba.
         !   Matriz para o tabuleiro 5x5
       
             
@@ -296,8 +296,8 @@ ENDPROC
 
     PROC VerificarBomba()
         ! Tavuleiro 5x5
-        !   Confere qual o valor na posiÁ„o escolhida na matriz. caso for 0 desenhar· safe e aumentara a pontuaÁ„o, caso for os valores das
-        !   dicas, desenhar· a dica equivalente e caso for 9 e aumentar· a pontuaÁ„o, desenhar· a bomba e tirar· o jogo do laÁo, finalizando-o
+        !   Confere qual o valor na posi√ß√£o escolhida na matriz. caso for 0 desenhar√° safe e aumentara a pontua√ß√£o, caso for os valores das
+        !   dicas, desenhar√° a dica equivalente e caso for 9 e aumentar√° a pontua√ß√£o, desenhar√° a bomba e tirar√° o jogo do la√ßo, finalizando-o
         if Valorinicial = 1 THEN    
             IF Matriz5{Eixoy,Eixox} = 0 THEN
                 DesenhaSafe;
@@ -332,7 +332,7 @@ ENDPROC
     
     PROC main()
          
-    !   No main È definido o valor inicial, ou seja, se ser· utilizado os codigos para 5x5 ou para 9x9.
+    !   No main √© definido o valor inicial, ou seja, se ser√° utilizado os codigos para 5x5 ou para 9x9.
     !   Logo em seguida sorteando as bombas e desenhando o tabuleiro.
         VAR num Modo;
         
@@ -353,14 +353,14 @@ ENDPROC
         DesenhaTabuleiro;
     ENDIF
     
-    !   A parte do jogador consiste em escolher valores nas coordenadas X e Y, que ser„o atribuidos a uma posiÁ„o no vetor
-    !   e verificando se h· bomba ou n„o na posiÁ„o.
-    !   Caso o jogador perca, o robo levantar· para permitir a limpeza do quadro.
-    !   Enquanto n„o houver bombas a continuidade ser· = 0, caso perca, continuidade = 1 quebrando o ciclo.
+    !   A parte do jogador consiste em escolher valores nas coordenadas X e Y, que ser√£o atribuidos a uma posi√ß√£o no vetor
+    !   e verificando se h√° bomba ou n√£o na posi√ß√£o.
+    !   Caso o jogador perca, o robo levantar√° para permitir a limpeza do quadro.
+    !   Enquanto n√£o houver bombas a continuidade ser√° = 0, caso perca, continuidade = 1 quebrando o ciclo.
     
         WHILE Continuidade = 0 DO 
             
-    !   Os laÁos abaixo foram feitos para evitar que o jogador coloque coordenadas fora das posiÁıes no jogo.
+    !   Os la√ßos abaixo foram feitos para evitar que o jogador coloque coordenadas fora das posi√ß√µes no jogo.
     
             TPReadNum Eixoy,"Escolha uma linha.";
             TPReadNum Eixox,"Escolha uma coluna.";
@@ -386,20 +386,20 @@ ENDPROC
                     
                 ENDIF
         !   no caso do tabuleiro 5x5, caso conseguir pisar em todas as casas sem bomba o jogador recebe a mensagem
-        !   de congratulaÁoes por vencer o jogoe o jogo finaliza.
+        !   de congratula√ßoes por vencer o jogoe o jogo finaliza.
             IF Valorinicial = 1 THEN
                 IF Ponto = 19 THEN
                     Continuidade := 2;
-                    TPWrite "ParabÈns, voce venceu o jogo!!";
+                    TPWrite "Parab√©ns, voce venceu o jogo!!";
                     MoveL Offs(p10,0,0,100), Velocidade, fine, tool0;
                 ENDIF
            ENDIF
         !   no caso do tabuleiro 9x9, caso conseguir pisar em todas as casas sem bomba o jogador recebe a mensagem
-        !   de congratulaÁoes por vencer o jogo e o jogo finaliza.
+        !   de congratula√ßoes por vencer o jogo e o jogo finaliza.
             IF Valorinicial = 2 THEN
                 IF Ponto = 71 THEN
                     Continuidade := 2;
-                    TPWrite "ParabÈns, voce venceu o jogo!!";
+                    TPWrite "Parab√©ns, voce venceu o jogo!!";
                     MoveL Offs(p10,0,0,100), Velocidade, fine, tool0;
                 ENDIF
             ENDIF
@@ -408,7 +408,7 @@ ENDPROC
         
         
         
-        ! Aqui o jogar perdeu, logo continuidade = 1 e a m·quina levanta para permitir apagar o jogo anterior.
+        ! Aqui o jogar perdeu, logo continuidade = 1 e a m√°quina levanta para permitir apagar o jogo anterior.
         
         IF Continuidade = 1 THEN
              MoveL Offs(p10,0,0,100), Velocidade, fine, tool0;
